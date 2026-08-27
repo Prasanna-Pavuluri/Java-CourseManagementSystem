@@ -43,18 +43,25 @@ static Scanner sc=new Scanner(System.in) ;
 		for(int i=0;i<CourseService.course_count;i++)
 		{
 			String s=CourseService.courses[i].getCourseName();
-			System.out.println((i+1)+"."+s);
-		}
-		int option = sc.nextInt();
-
-		int index = option - 1;
-
-		if (index < 0 || index >= CourseService.course_count) {
-		    System.out.println("No course found");
-		    return;
+			System.out.println(s);
 		}
 		
-		String course=CourseService.courses[index].getCourseName();
+		String select_course=sc.next();
+		int index=-1;
+		for(int i=0;i<CourseService.course_count;i++) {
+			
+			if(select_course.equalsIgnoreCase(CourseService.courses[i].getCourseName())) {
+				index=i;
+				break;
+			}
+			
+		}
+		
+		if(index==-1) {
+			System.out.println("Invalid course");
+			return ;
+		}
+		
 		
 		
 		
@@ -63,7 +70,7 @@ static Scanner sc=new Scanner(System.in) ;
 		System.out.println(" Dept : ");
 		String dept=sc.next();
 		
-		Student s1=new Student(id,name,age,course,dept);
+		Student s1=new Student(id,name,age,select_course,dept);
 		
 		Service.students[Service.count]=s1;
 		
