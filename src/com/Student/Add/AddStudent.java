@@ -50,7 +50,7 @@ static Scanner sc=new Scanner(System.in) ;
 		int index=-1;
 		for(int i=0;i<CourseService.course_count;i++) {
 			
-			if(select_course.equalsIgnoreCase(CourseService.courses[i].getCourseName())) {
+			if(select_course.equals(CourseService.courses[i].getCourseName())) {
 				index=i;
 				break;
 			}
